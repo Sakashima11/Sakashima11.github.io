@@ -7,4 +7,5 @@ button.addEventListener('click',()=>{
   //titleの中身の文章を「ボタンが押されました！」に変更する
   title.innerHTML='ボタンが押されました！';
   //以前のalert()のコードはコメントアウトしておきます
-  //alert('ボタンが押されたよ！');});
+  //alert('ボタンが押されたよ！');
+});
