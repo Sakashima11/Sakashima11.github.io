@@ -9,3 +9,7 @@ button.addEventListener('click',()=>{
   //以前のalert()のコードはコメントアウトしておきます
   //alert('ボタンが押されたよ！');
 });
+//ボタン2の情報を取得する
+const button=document.getElementById('button2');
+//ボタン2がクリックされたら、以下の命令を実行する
+button.addEventListener('click',()=>{alert('ボタンが押されたよ！');});
