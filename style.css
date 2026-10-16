@@ -1,6 +1,144 @@
-h1{color:green;}
-h1{border:2px solid black;padding:20px;}
-body{background-color:lightblue;}
-body{font-family:"Comic Sans MS","Comic Sans",cursive;}
-ul{border:2px solid black;padding:15px;}
-.flex-container{display:flex; justify-content:center; align-items:center;height:200px;flex-direction:column;}
+/* * Thinking & Youth Addict - Common Styles
+ * 全ページ共通の「紙と写真」の世界観を作るコアCSS 
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Nanum+Pen+Script&display=swap');
+
+:root {
+    --paper-color: #f8f6f2;
+    --accent-blue: rgba(199, 210, 254, 0.6);
+    --text-main: #2a2a2a;
+    --text-muted: #9ca3af;
+}
+
+/* --- Base Layout --- */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--paper-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    /* 共通の紙テクスチャ */
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.serif { font-family: 'Playfair Display', serif; }
+.handwritten { font-family: 'Nanum Pen Script', cursive; }
+
+/* --- Components --- */
+
+/* フォトカードの基本（Index/Gallery共通） */
+.photo-card {
+    background: #ffffff;
+    padding: 12px 12px 45px 12px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.08), 0 0 50px rgba(0,0,0,0.02) inset;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.03);
+    display: block;
+}
+
+.photo-inner {
+    border-radius: 1px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* マスキングテープ */
+.tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1.5deg);
+    width: 90px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(2px);
+    border-left: 1px dashed rgba(0,0,0,0.1);
+    border-right: 1px dashed rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* コーヒーの染みなどの装飾 */
+.stain {
+    position: absolute;
+    background: radial-gradient(circle, rgba(139, 69, 19, 0.03) 0%, rgba(139, 69, 19, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* リンクボタン（共通スタイル） */
+.btn-outline {
+    display: inline-block;
+    border: 1px solid currentColor;
+    padding: 0.75rem 2rem;
+    text-[10px] uppercase tracking-[0.3em] font-bold;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--text-main);
+    color: #fff;
+}
+
+/* --- Animations --- */
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 浮遊エフェクト（Indexで使用） */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+    50% { transform: translateY(-10px) rotate(calc(var(--rot, 0deg) + 1deg)); }
+    100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+.notebook-line {
+   background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px);
+   background-size: 100% 2rem;
+   line-height: 2rem;
+}
+.tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: rgba(0,0,0,0.05);
+    color: #666;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 25rem !important; 
+    line-height: 2.5rem;
+    resize: vertical; 
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.letter-paper input, 
+.letter-paper select, 
+.letter-paper textarea {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+/* 罫線と文字がズレないように調整 */
+.letter-paper textarea {
+    background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 100% 2.5rem;
+    background-attachment: local;
+}
+
+/* PCのときの送信ボタンを少し大きく、存在感を出す */
+.submit-btn {
+    min-width: 240px;
+    letter-spacing: 0.5em;
+}
