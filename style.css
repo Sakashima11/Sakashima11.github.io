@@ -142,3 +142,8 @@ textarea {
     min-width: 240px;
     letter-spacing: 0.5em;
 }
+
+img {
+    -webkit-user-drag: none; /* ドラッグ禁止 */
+    user-select: none;
+}
