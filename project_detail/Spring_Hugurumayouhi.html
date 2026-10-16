@@ -112,6 +112,14 @@
         // 【おまけ】作品のカテゴリに応じて戻り先リンクを自動調整するなら
         // この作品が 'work' カテゴリなら：
         // document.getElementById('back-to-gallery').href = "gallery.html?filter=work";
+
+        // 画像の上での右クリックを禁止する
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        alert('画像の保存・転載はご遠慮ください。'); // 警告
+    }
+});
     </script>
 </body>
 </html>
