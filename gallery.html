@@ -260,6 +260,13 @@ window.onload = () => {
     updateDisplay(); // ここで初期表示を実行！
 };
 
+        // 画像の上での右クリックを禁止する
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        alert('画像の保存・転載はご遠慮ください。'); // 警告
+    }
+});
     </script>
 </body>
 </html>
