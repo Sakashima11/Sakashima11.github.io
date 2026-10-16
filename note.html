@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Thinking & Youth Addict</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    async function loadComponent(id, file) {
+        const response = await fetch(file);
+        const text = await response.text();
+        document.getElementById(id).innerHTML = text;
+    }
+    // 読み込み実行
+    loadComponent('header-placeholder', 'header.html');
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
+<body class="pt-24">
+
+    <div class="stain top-[5%] right-[-10%] w-[400px] h-[400px]"></div>
+
+    <!-- Navigation -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-8 py-16 relative z-10">
+        
+        <!-- Profile Header -->
+        <header class="flex flex-col md:flex-row gap-12 items-start mb-24">
+            <div class="photo-card rotate-[-2deg] shrink-0 mx-auto md:mx-0">
+                <div class="tape"></div>
+                <div class="w-48 h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                    [自分のアイコンまたは自画像]
+                </div>
+                <p class="handwritten text-center mt-3 text-gray-400">11_Sakashima</p>
+            </div>
+            
+            <div class="space-y-6">
+                <h1 class="serif italic text-5xl tracking-tighter">Profile</h1>
+                <div class="space-y-4 text-sm leading-relaxed text-gray-600">
+                    <p>イラストレーター</p>
+                    <p>「生きてるだけで可愛いと思われたい！」をメインテーマに制作活動をしています。</p>
+                    <p>できること：一枚絵、キャラクターデザイン、Live2D</p>
+                    <p>勉強中：動画編集、Web制作等</p>
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://x.com/sk11work" class="text-lg hover:text-indigo-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/sksm__11" class="text-lg hover:text-indigo-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://xfolio.jp/portfolio/JU_1_V" class="text-lg hover:text-indigo-400 transition"><i class="fas fa-briefcase"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sections -->
+        <div class="grid md:grid-cols-2 gap-16">
+            
+            <!-- Illustration Section -->
+            <section class="space-y-6">
+                <div class="relative inline-block">
+                    <h2 class="serif italic text-3xl">Illustration</h2>
+                    <div class="absolute -bottom-1 left-0 w-full h-2 bg-indigo-100/60 -z-10 rotate-[-1deg]"></div>
+                </div>
+                <div class="notebook-line text-sm text-gray-600">
+                    細々とイラストの依頼をお受けしています。<br>
+                    MVビジュアル、キャラデザ、ステッカーなど。<br>
+                    あなたの「思考」を形にするお手伝いをさせてください。<br>
+                    副業として活動中です。ご相談はLetterからお気軽に。
+                </div>
+            </section>
+          
+        <!-- Scrapbook Elements -->
+        <div class="mt-32 relative h-64 hidden md:block">
+            <div class="photo-card absolute top-0 left-[10%] w-40 rotate-[5deg]">
+                <div class="photo-inner aspect-square bg-gray-100 text-[10px] flex items-center justify-center">
+                    [Illustration Sketch]
+                </div>
+            </div>
+            <div class="absolute top-[50%] left-[40%] handwritten text-2xl text-indigo-400/40 rotate-12">
+                stay thinking...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>
+
