@@ -6,7 +6,7 @@
     <title>Project Detail | Thinking & Youth Addict</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body class="pt-24">
 
@@ -18,7 +18,7 @@
                 例: この作品が 'work' なら gallery.html?filter=work に戻す 
                 何も指定しなければ gallery.html (All) に戻る 
             -->
-            <a href="/gallery.html" id="back-to-gallery" class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 hover:text-black transition flex items-center gap-2">
+            <a href="../gallery.html" id="back-to-gallery" class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 hover:text-black transition flex items-center gap-2">
                 <i class="fas fa-long-arrow-alt-left"></i> Back to Gallery
             </a>
         </div>
@@ -71,7 +71,7 @@
                 </section>
 
                 <div class="flex flex-col gap-4">
-                    <a href="/letter.html?subject=work&ref=豊穣の地" id="order-button" class="btn-outline w-full py-4 text-center text-[10px] uppercase tracking-[0.4em] font-bold flex items-center justify-center gap-3">
+                    <a href="../letter.html?subject=work&ref=豊穣の地" id="order-button" class="btn-outline w-full py-4 text-center text-[10px] uppercase tracking-[0.4em] font-bold flex items-center justify-center gap-3">
                     この作品のような依頼をする
                     </a>
 
@@ -98,7 +98,7 @@
         const projectTitle = document.getElementById('project-title').innerText;
         const orderButton = document.getElementById('order-button');
         // URLエンコードして「?ref=作品名」という形で飛ばす
-        orderButton.href = `/letter.html?ref=${encodeURIComponent(projectTitle)}`;
+        orderButton.href = `../letter.html?ref=${encodeURIComponent(projectTitle)}`;
 
         // コンポーネント読み込み
         async function loadComponent(id, file) {
@@ -106,8 +106,8 @@
             const text = await response.text();
             document.getElementById(id).innerHTML = text;
         }
-        loadComponent('header-placeholder', '/header.html');
-        loadComponent('footer-placeholder', '/footer.html');
+        loadComponent('header-placeholder', '../header.html');
+        loadComponent('footer-placeholder', '../footer.html');
 
         // 【おまけ】作品のカテゴリに応じて戻り先リンクを自動調整するなら
         // この作品が 'work' カテゴリなら：
