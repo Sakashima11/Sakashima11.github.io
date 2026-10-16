@@ -1,0 +1,10 @@
+<!doctype html>
+<html>
+<body>
+<form action="https://formspree.io/f/xwlvanjp" method="POST">
+  <input type="email" name="_replyto" placeholder="email@example.com" required>
+  <input type="hidden" name="_next" value="https://sakashima11.github.io/thanks.html">
+  <button type="submit">Send</button>
+</form>
+</body>
+</html>
