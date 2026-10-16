@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Thinking & Youth Addict</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 絞り込みで消すためのスタイル */
+        .hidden-item {
+            display: none !important;
+        }
+        /* フェードインのアニメーション */
+        .gallery-item {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="pt-24">
+
+    <div id="header-placeholder"></div>
+
+    <header class="max-w-7xl mx-auto px-8 pt-12 mb-16 relative">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+            <div class="space-y-4">
+                <h1 class="serif italic text-6xl tracking-tighter opacity-90">Gallery</h1>
+                <p class="handwritten text-3xl text-gray-400 rotate-[-1deg] inline-block">散乱あるいは彩りの記録</p>
+            </div>
+            
+            <div class="space-y-4">
+                <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-2">Category Filter</p>
+                <div class="flex flex-wrap gap-4" id="filter-btn-container">
+                    <button onclick="filterSelection('all')" class="tag-btn active text-[11px] uppercase tracking-widest font-bold" data-filter="all">All</button>
+                    <button onclick="filterSelection('work')" class="tag-btn text-[11px] uppercase tracking-widest font-bold text-gray-500" data-filter="work">Works</button>
+                    <button onclick="filterSelection('girl')" class="tag-btn text-[11px] uppercase tracking-widest font-bold text-gray-500" data-filter="girl">Girl</button>
+                    <button onclick="filterSelection('boy')" class="tag-btn text-[11px] uppercase tracking-widest font-bold text-gray-500" data-filter="boy">Boy</button>
+                    <button onclick="filterSelection('stage')" class="tag-btn text-[11px] uppercase tracking-widest font-bold text-gray-500" data-filter="stage">Stage</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-8 pb-32">
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20">
+           
+            <!-- 作品 06 -->
+            <div class="gallery-item boy">
+                <a href="project_detail/Doarlae_V_Leo.html" class="photo-card rotate-[-1.5deg] group block">
+                    <div class="photo-inner aspect-square bg-gray-100 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1io8md2sm1SrYRlhbQeI1xyoIwBp8qsB5" alt="踊らぬ日" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <h3 class="text-sm font-bold tracking-tight">踊らぬ日</h3>
+                        <p class="text-[10px] text-gray-400 font-light">#Boy / Personal Work</p>
+                    </div>
+                    <div class="absolute -bottom-6 -right-2 handwritten text-gray-300 text-sm rotate-20">Who are you?</div>
+                </a>
+            </div>     
+
+            <!-- 作品 01 -->
+            <div class="gallery-item work girl">
+                <a href="project_detail/work01_chibi_illust.html" class="photo-card rotate-[0.5deg] group block">
+                    <div class="tape"></div>
+                    <div class="photo-inner aspect-square bg-gray-200 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1x_YIhm-G2y-tQ8cLUR-sFsTub0D-ZlJS" alt="うたいとあ様ご依頼ちびビジュアル" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-sm font-bold tracking-tight">ちびビジュアル</h3>
+                            <span class="handwritten text-indigo-500 text-lg">Work</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 font-light italic">依頼主: うたいとあ様 / 2026</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 作品 02 -->
+            <div class="gallery-item girl">
+                <a href="project_detail/Spring_Hugurumayouhi.html" class="photo-card rotate-[-1.5deg] group block">
+                    <div class="photo-inner aspect-square bg-gray-100 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1yW-q62sniwRMq1u1udj3Lfhd7m70yCaJ" alt="恋の季節" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <h3 class="text-sm font-bold tracking-tight">恋の季節</h3>
+                        <p class="text-[10px] text-gray-400 font-light">#Girl / Personal Work</p>
+                    </div>
+                    <div class="absolute -bottom-6 -right-2 handwritten text-gray-300 text-sm rotate-12">good vibes</div>
+                </a>
+            </div>
+
+            <!-- 作品 03 -->
+            <div class="gallery-item girl">
+                <a href="project_detail/Summer_Gasyadokuro.html" class="photo-card rotate-[1.2deg] group block">
+                    <div class="tape" style="width: 60px; transform: translateX(-50%) rotate(5deg); opacity: 0.6;"></div>
+                    <div class="photo-inner aspect-square bg-gray-300 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1w_YlhTSDGMXh2EmOGgRqYUMWgCZJqQIf" alt="夢の跡" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <h3 class="text-sm font-bold tracking-tight">夢の跡 </h3>
+                        <p class="text-[10px] text-gray-400 font-light italic">#Girl / Personal work</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 作品 04 -->
+            <div class="gallery-item girl">
+                <a href="project_detail/Artumm_Daidarabocchi.html" class="photo-card rotate-[1.2deg] group block">
+                    <div class="tape" style="width: 60px; transform: translateX(-50%) rotate(5deg); opacity: 0.6;"></div>
+                    <div class="photo-inner aspect-square bg-gray-300 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1-5N-dQFsQwbkp_BGbUV4KDXP6p_gS1Gq" alt="豊穣の地" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <h3 class="text-sm font-bold tracking-tight">豊穣の地 </h3>
+                        <p class="text-[10px] text-gray-400 font-light italic">#Girl / Personal work</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 作品 05 -->
+            <div class="gallery-item girl">
+                <a href="project_detail/Winter_Kudan.html" class="photo-card rotate-[1.2deg] group block">
+                    <div class="tape" style="width: 60px; transform: translateX(-50%) rotate(5deg); opacity: 0.6;"></div>
+                    <div class="photo-inner aspect-square bg-gray-300 mb-5 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1i7Z9vAw1OrbQLMUn8w1FDp6Ht_PzdZaE" alt="輪廻の種" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <div class="px-2 space-y-1">
+                        <h3 class="text-sm font-bold tracking-tight">輪廻の種 </h3>
+                        <p class="text-[10px] text-gray-400 font-light italic">#Girl / Personal work</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <!-- Pagination Controls -->
+        <div id="pagination" class="mt-24 flex justify-center items-center gap-4">
+         <button id="prev-btn" onclick="changePage(-1)" class="px-4 py-2 border border-gray-200 text-[10px] uppercase tracking-widest hover:bg-black hover:text-white disabled:opacity-30 disabled:cursor-not-allowed">Prev</button>
+         <div id="page-numbers" class="flex gap-2">
+         <!-- ここに数字ボタンが自動で入るぜ -->
+         </div>
+         <button id="next-btn" onclick="changePage(1)" class="px-4 py-2 border border-gray-200 text-[10px] uppercase tracking-widest hover:bg-black hover:text-white disabled:opacity-30 disabled:cursor-not-allowed">Next</button>
+        </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // --- 設定 ---
+const itemsPerPage = 6; // 1ページに表示する枚数（増やしたくなったらここを変えるだけ！）
+let currentPage = 1;
+let currentFilter = 'all';
+
+// コンポーネント読み込み
+async function loadComponent(id, file) {
+    try {
+        const response = await fetch(file);
+        const text = await response.text();
+        document.getElementById(id).innerHTML = text;
+    } catch (e) { console.error(e); }
+}
+
+// 絞り込み & ページネーション更新
+function filterSelection(c) {
+    currentFilter = c;
+    currentPage = 1; // フィルターを変えたら1ページ目に戻す
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const items = Array.from(document.getElementsByClassName("gallery-item"));
+    const btns = document.getElementsByClassName("tag-btn");
+    
+    // 1. ボタンのスタイル更新
+    for (let btn of btns) {
+        btn.classList.remove("active");
+        btn.classList.add("text-gray-500");
+        if (btn.getAttribute("data-filter") === currentFilter) {
+            btn.classList.add("active");
+            btn.classList.remove("text-gray-500");
+        }
+    }
+
+    // 2. フィルターに合うアイテムを抽出
+    const filteredItems = items.filter(item => {
+        item.classList.add("hidden-item"); // 一旦全部隠す
+        return currentFilter === "all" || item.classList.contains(currentFilter);
+    });
+
+    // 3. ページネーションの計算
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    // 4. 現在のページのアイテムだけ表示
+    filteredItems.forEach((item, index) => {
+        if (index >= startIndex && index < endIndex) {
+            item.classList.remove("hidden-item");
+        }
+    });
+
+    // 5. ページネーションUIの更新
+    renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+    const paginationArea = document.getElementById("pagination");
+    const pageNumbers = document.getElementById("page-numbers");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    // 1ページ以下ならコントロール自体を隠す
+    if (totalPages <= 1) {
+        paginationArea.style.display = "none";
+        return;
+    }
+    paginationArea.style.display = "flex";
+    pageNumbers.innerHTML = "";
+
+    // 数字ボタン生成
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        btn.className = `w-8 h-8 border border-gray-200 text-[10px] font-bold transition-all ${i === currentPage ? 'bg-black text-white border-black' : 'hover:bg-gray-50'}`;
+        btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+        pageNumbers.appendChild(btn);
+    }
+
+    prevBtn.disabled = (currentPage === 1);
+    nextBtn.disabled = (currentPage === totalPages);
+}
+
+function changePage(step) {
+    currentPage += step;
+    updateDisplay();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// 初期実行
+window.onload = () => {
+    loadComponent('header-placeholder', 'header.html');
+    loadComponent('footer-placeholder', 'footer.html');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    if (filter) currentFilter = filter;
+
+    updateDisplay(); // ここで初期表示を実行！
+};
+
+    </script>
+</body>
+</html>
