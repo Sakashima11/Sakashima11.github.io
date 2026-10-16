@@ -186,9 +186,13 @@ function updateDisplay() {
         }
     }
 
-    // 2. フィルターに合うアイテムを抽出
+    // すべてのアイテムから隠すクラス（hidden-item）を一度リセット
+    items.forEach(item => {
+        item.classList.remove("hidden-item");
+    });
+
+    // 2. フィルターに合うアイテムだけを抽出
     const filteredItems = items.filter(item => {
-        item.classList.add("hidden-item"); // 一旦全部隠す
         return currentFilter === "all" || item.classList.contains(currentFilter);
     });
 
@@ -197,17 +201,20 @@ function updateDisplay() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    // 4. 現在のページのアイテムだけ表示
+    // 4. 全アイテムを一度隠してから、現在のページのアイテムだけ表示する
+    items.forEach(item => {
+        item.classList.add("hidden-item"); // 一旦全部隠す
+    });
+
     filteredItems.forEach((item, index) => {
         if (index >= startIndex && index < endIndex) {
-            item.classList.remove("hidden-item");
+            item.classList.remove("hidden-item"); // 該当ページの分だけ表示する
         }
     });
 
     // 5. ページネーションUIの更新
     renderPagination(totalPages);
 }
-
 function renderPagination(totalPages) {
     const paginationArea = document.getElementById("pagination");
     const pageNumbers = document.getElementById("page-numbers");
