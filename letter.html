@@ -53,6 +53,91 @@
             }
         }
 </style>
+
+<body class="pt-24">
+
+    <div class="stain top-[20%] left-[-5%] w-[300px] h-[300px]"></div>
+    <div class="stain bottom-[5%] right-[-5%] w-[400px] h-[400px]"></div>
+
+    <!-- Navigation -->
+    <div id="header-placeholder"></div>
+
+    <main class="max-w-4xl mx-auto px-8 py-16">
+        <header class="mb-16 space-y-4">
+            <h1 class="serif italic text-5xl tracking-tighter">Letter</h1>
+            <p class="handwritten text-2xl text-indigo-400 rotate-[-1deg]">あなたの声を、届けてください。</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold pt-4">Contact for illustration or theater</p>
+        </header>
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="relative">
+            <input type="hidden" name="access_key" value="f5cac78a-f098-4420-b9d7-b61698e7e536">
+            <input type="hidden" name="redirect" value="https://sakashima11.github.io/thanks.html">
+            <input type="hidden" name="subject" value="【ポートフォリオ】新しいメッセージが届きました">
+            <!-- 封筒の切手部分のようなデコレーション -->
+            <div class="absolute -top-16 -right-4 hidden lg:block cursor-pointer hover:scale-110 transition-transform" 
+                 onclick="playStampGimmick()">
+            <div class="stamp scale-110">
+            <div class="text-center">
+            <i class="fas fa-feather-alt mb-2 opacity-50"></i><br>
+            <span class="text-[8px]">PUSH ME</span>
+            </div>
+            </div>
+            </div>
+
+            <div class="letter-paper">
+                <div class="space-y-10">
+                    <div class="border-b border-gray-100 flex items-end py-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Name</label>
+                        <input type="text" name="name" placeholder="お名前" class="bg-transparent text-sm w-full outline-none text-gray-600" required>
+                    </div>
+                    
+                    <div class="border-b border-gray-100 flex items-end py-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Email</label>
+                        <input type="email" name="email" placeholder="メールアドレス" class="bg-transparent text-sm w-full outline-none text-gray-600" required>
+                    </div>
+
+                    <div class="border-b border-gray-100 flex items-end py-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Subject</label>
+                        <select name="subject" class="bg-transparent text-sm w-full outline-none text-gray-600">
+                            <option value="work">イラストのご依頼</option>
+                            <option value="character">キャラクターデザイン</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+
+                     <div class="py-2">
+                        <label class="text-[10px] uppercase tracking-widest text-gray-400 block mb-6">Message</label>
+                       <textarea name="message" id="message-input" placeholder="ここにメッセージを書いてください..." required 
+                       class="w-full bg-transparent border-none outline-none focus:ring-0 leading-[2.5rem] py-0 min-h-[40vh]"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
+                <p class="text-[10px] text-gray-400 leading-relaxed max-w-sm">
+                    ※イラストのご依頼の際は、納期やご予算の目安を併記いただけるとスムーズです。<br>
+                    3日以内の返信を心がけています。
+                </p>
+                <button type="submit" class="submit-btn text-[10px] uppercase tracking-[0.4em] font-bold">
+                    Send Letter
+                </button>
+            </div>
+        </form>
+
+        <!-- Decoration -->
+        <div class="mt-24 relative hidden md:block">
+            <div class="absolute left-0 handwritten text-gray-300 text-xl rotate-[-5deg]">
+                waiting for your story...
+            </div>
+            <div class="absolute right-10 -top-10 opacity-10">
+                <i class="fas fa-envelope-open-text text-[120px]"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
 <script>
     async function loadComponent(id, file) {
         const response = await fetch(file);
@@ -163,89 +248,6 @@ function playStampGimmick() {
     ], { duration: 100 });
 }
 </script>
-<body class="pt-24">
-
-    <div class="stain top-[20%] left-[-5%] w-[300px] h-[300px]"></div>
-    <div class="stain bottom-[5%] right-[-5%] w-[400px] h-[400px]"></div>
-
-    <!-- Navigation -->
-    <div id="header-placeholder"></div>
-
-    <main class="max-w-4xl mx-auto px-8 py-16">
-        <header class="mb-16 space-y-4">
-            <h1 class="serif italic text-5xl tracking-tighter">Letter</h1>
-            <p class="handwritten text-2xl text-indigo-400 rotate-[-1deg]">あなたの声を、届けてください。</p>
-            <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold pt-4">Contact for illustration or theater</p>
-        </header>
-
-        <form action="https://api.web3forms.com/submit" method="POST" class="relative">
-            <input type="hidden" name="access_key" value="f5cac78a-f098-4420-b9d7-b61698e7e536">
-            <input type="hidden" name="redirect" value="https://sakashima11.github.io/thanks.html">
-            <input type="hidden" name="subject" value="【ポートフォリオ】新しいメッセージが届きました">
-            <!-- 封筒の切手部分のようなデコレーション -->
-            <div class="absolute -top-16 -right-4 hidden lg:block cursor-pointer hover:scale-110 transition-transform" 
-                 onclick="playStampGimmick()">
-            <div class="stamp scale-110">
-            <div class="text-center">
-            <i class="fas fa-feather-alt mb-2 opacity-50"></i><br>
-            <span class="text-[8px]">PUSH ME</span>
-            </div>
-            </div>
-            </div>
-
-            <div class="letter-paper">
-                <div class="space-y-10">
-                    <div class="border-b border-gray-100 flex items-end py-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Name</label>
-                        <input type="text" name="name" placeholder="お名前" required>
-                    </div>
-                    
-                    <div class="border-b border-gray-100 flex items-end py-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Email</label>
-                        <input type="email" name="email" placeholder="メールアドレス" required>
-                    </div>
-
-                    <div class="border-b border-gray-100 flex items-end py-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-400 w-24 shrink-0">Subject</label>
-                        <select name="subject" class="bg-transparent text-sm w-full outline-none text-gray-600">
-                            <option value="work">イラストのご依頼</option>
-                            <option value="character">キャラクターデザイン</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
-
-                     <div class="py-2">
-                        <label class="text-[10px] uppercase tracking-widest text-gray-400 block mb-6">Message</label>
-                       <textarea name="message" id="message-input" placeholder="ここにメッセージを書いてください..." required 
-                       class="w-full bg-transparent border-none outline-none focus:ring-0 leading-[2.5rem] py-0 min-h-[40vh]"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
-                <p class="text-[10px] text-gray-400 leading-relaxed max-w-sm">
-                    ※イラストのご依頼の際は、納期やご予算の目安を併記いただけるとスムーズです。<br>
-                    3日以内の返信を心がけています。
-                </p>
-                <button type="submit" class="submit-btn text-[10px] uppercase tracking-[0.4em] font-bold">
-                    Send Letter
-                </button>
-            </div>
-        </form>
-
-        <!-- Decoration -->
-        <div class="mt-24 relative hidden md:block">
-            <div class="absolute left-0 handwritten text-gray-300 text-xl rotate-[-5deg]">
-                waiting for your story...
-            </div>
-            <div class="absolute right-10 -top-10 opacity-10">
-                <i class="fas fa-envelope-open-text text-[120px]"></i>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <div id="footer-placeholder"></div>
 
 </body>
 </html>
