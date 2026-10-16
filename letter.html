@@ -178,7 +178,10 @@ function playStampGimmick() {
             <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold pt-4">Contact for illustration or theater</p>
         </header>
 
-        <form action="https://formspree.io/f/xwlvanjp" method="POST" class="relative">
+        <form action="https://api.web3forms.com/submit" method="POST" class="relative">
+            <input type="hidden" name="access_key" value="f5cac78a-f098-4420-b9d7-b61698e7e536">
+            <input type="hidden" name="redirect" value="https://sakashima11.github.io/thanks.html">
+            <input type="hidden" name="subject" value="【ポートフォリオ】新しいメッセージが届きました">
             <!-- 封筒の切手部分のようなデコレーション -->
             <div class="absolute -top-16 -right-4 hidden lg:block cursor-pointer hover:scale-110 transition-transform" 
                  onclick="playStampGimmick()">
@@ -189,7 +192,6 @@ function playStampGimmick() {
             </div>
             </div>
             </div>
-<input type="hidden" name="_next" value="https://sakashima11.github.io/thanks.html">
 
             <div class="letter-paper">
                 <div class="space-y-10">
