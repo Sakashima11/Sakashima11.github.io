@@ -1,26 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet"href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Thinking & Youth Addict</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* index固有の追加スタイル */
+        .photo-card { cursor: pointer; }
+    </style>
 </head>
+<script>
+    async function loadComponent(id, file) {
+        const response = await fetch(file);
+        const text = await response.text();
+        document.getElementById(id).innerHTML = text;
+    }
+    // 読み込み実行
+    loadComponent('header-placeholder', 'header.html');
+    loadComponent('footer-placeholder', 'footer.html');
+</script>
 <body>
-<div class="flex-container">
-  <h1 id="myTitle">Hello! ようこそ私のポートフォリオへ</h1>
-  <p>これは、私が学習したことをまとめたものです。</p>
-</div>
-  <button id="button2">ここを押してね</button>
-  <script>alert('Hello!');</script>
-  <h2>作品リスト</h2>
-  <ul>
-    <li><a href="2024年の作品.html">2024年の作品</a></li>
-    <li><a href="2023年の作品.html">2023年の作品</a></li>
-    <li><a href="2022年の作品.html">2022年の作品</a></li>
-  </ul>
-  <img src="images/あ.jpg"alt="これはサンプルの画像です">
-  <img src="お豆腐のイラスト.png"alt="新しい画像です。">
-  <a href="about.html"><img src="images/シーラカンスのイラスト.jpg"alt="バナー広告です"></a>
-  <button id="myButton">ここを押してね</button>
-  <script src="script.js"></script>
+
+    <div class="stain top-[10%] left-[-5%] w-[300px] h-[300px]"></div>
+    <div class="stain bottom-[10%] right-[-5%] w-[400px] h-[400px]"></div>
+
+    <!-- Navigation -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 px-8 max-w-7xl mx-auto relative flex items-center">
+        <div class="grid lg:grid-cols-5 gap-12 items-center w-full">
+            
+            <div class="lg:col-span-2 fade-in space-y-8 z-20">
+                <div class="relative inline-block">
+                    <span class="handwritten text-3xl text-indigo-400 absolute -top-8 -left-4 rotate-[-10deg] opacity-70">Thinking & Youth Addict</span>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tighter text-gray-800">
+                        生きてるだけで<br>可愛いって<br>思われたい！
+                    </h1>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-sm text-gray-500 font-light leading-relaxed max-w-xs">
+                        ぐちゃぐちゃな思考と、<br>
+                        終わらない青春への依存。<br>
+                        ただここにいるあなたへ。
+                    </p>
+                    <div class="flex gap-4 items-center">
+                        <a href="gallery.html" class="bg-black text-white px-6 py-3 rounded-sm text-[10px] uppercase tracking-widest font-bold hover:bg-gray-800 transition">Open Box</a>
+                        <span class="handwritten text-xl text-gray-400">← touch to see</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scatter Area: 乱雑な配置 -->
+            <div class="lg:col-span-3 relative h-[600px] w-full mt-12 lg:mt-0">
+                <!-- Main Big Photo (クリックで詳細へ) -->
+                <a href="project_detail/Spring_Hugurumayouhi.html" class="photo-card absolute top-[10%] left-[10%] w-64 md:w-80 floating z-10" style="--rot: -2deg;">
+                    <div class="tape"></div>
+                    <div class="photo-inner aspect-[4/5] bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1yW-q62sniwRMq1u1udj3Lfhd7m70yCaJ" alt="Spring_Hugurumayouhi" class="w-full h-full object-cover">
+                    </div>
+                    <p class="handwritten text-center mt-3 text-gray-400 text-lg italic">Spring</p>
+                </a>
+
+                <!-- Sub Photo 1 (演劇写真) -->
+                <a href="detail-stage01.html" class="photo-card absolute bottom-[15%] left-[0%] w-48 md:w-56 floating z-0" style="--rot: 4deg; animation-delay: -1s;">
+                    <div class="photo-inner aspect-square bg-gray-100 flex items-center justify-center overflow-hidden">
+                        <img src="path/to/stage01.jpg" alt="Stage Photo" class="w-full h-full object-cover">
+                    </div>
+                    <p class="handwritten text-center mt-2 text-gray-400">#Youth</p>
+                </a>
+
+                <!-- Sub Photo 2 (スケッチ) -->
+                <a href="detail-personal01.html" class="photo-card absolute top-[50%] right-[10%] w-44 md:w-52 floating z-20" style="--rot: -5deg; animation-delay: -2s;">
+                    <div class="tape" style="width: 50px;"></div>
+                    <div class="photo-inner aspect-square bg-gray-300 flex items-center justify-center overflow-hidden">
+                        <img src="path/to/sketch.jpg" alt="Sketch" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -right-8 top-0 handwritten text-indigo-400 text-xl rotate-12">New!</div>
+                </a>
+
+                <!-- Scattered Notes (付箋) -->
+                <div class="absolute top-[20%] right-[20%] bg-yellow-50 p-4 shadow-sm border-l-4 border-yellow-200 rotate-[8deg] z-0 hidden md:block">
+                    <p class="handwritten text-sm text-yellow-700 leading-tight">
+                        あれと、これと<br>
+                        からから回る<br>
+                        いとおしさ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Index Guide -->
+    <section class="py-12 px-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-20 gap-y-12">
+            <a href="gallery.html" class="text-center group cursor-pointer">
+                <p class="serif italic text-3xl mb-1 group-hover:text-indigo-500 transition">01</p>
+                <p class="text-[9px] uppercase tracking-[0.3em] font-bold">Archives</p>
+                <div class="h-px w-0 group-hover:w-full bg-indigo-500 transition-all duration-500 mx-auto mt-2"></div>
+            </a>
+            <a href="service.html" class="text-center group cursor-pointer">
+                <p class="serif italic text-3xl mb-1 group-hover:text-indigo-500 transition">02</p>
+                <p class="text-[9px] uppercase tracking-[0.3em] font-bold">Service</p>
+                <div class="h-px w-0 group-hover:w-full bg-indigo-500 transition-all duration-500 mx-auto mt-2"></div>
+            </a>
+            <a href="note.html" class="text-center group cursor-pointer">
+                <p class="serif italic text-3xl mb-1 group-hover:text-indigo-500 transition">03</p>
+                <p class="text-[9px] uppercase tracking-[0.3em] font-bold">Notes</p>
+                <div class="h-px w-0 group-hover:w-full bg-indigo-500 transition-all duration-500 mx-auto mt-2"></div>
+            </a>
+            <a href="letter.html" class="text-center group cursor-pointer">
+                <p class="serif italic text-3xl mb-1 group-hover:text-indigo-500 transition">04</p>
+                <p class="text-[9px] uppercase tracking-[0.3em] font-bold">Letters</p>
+                <div class="h-px w-0 group-hover:w-full bg-indigo-500 transition-all duration-500 mx-auto mt-2"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function toggleMenu() {
+            // モバイルメニューが必要な場合に実装
+        }
+    </script>
 </body>
 </html>
