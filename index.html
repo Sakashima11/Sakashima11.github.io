@@ -13,14 +13,109 @@
     </style>
 </head>
 <script>
-    async function loadComponent(id, file) {
+    // --- 設定 ---
+const itemsPerPage = 6; 
+let currentPage = 1;
+let currentFilter = 'all';
+
+// コンポーネント読み込み（async/awaitで完了を待てるようにする）
+async function loadComponent(id, file) {
+    try {
         const response = await fetch(file);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const text = await response.text();
         document.getElementById(id).innerHTML = text;
+    } catch (e) { 
+        console.error(`Failed to load ${file}:`, e); 
     }
-    // 読み込み実行
-    loadComponent('header-placeholder', 'header.html');
-    loadComponent('footer-placeholder', 'footer.html');
+}
+
+// 絞り込み & ページネーション更新
+function filterSelection(c) {
+    currentFilter = c;
+    currentPage = 1; 
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const items = Array.from(document.getElementsByClassName("gallery-item"));
+    const btns = document.getElementsByClassName("tag-btn");
+    
+    // 1. ボタンのスタイル更新
+    for (let btn of btns) {
+        btn.classList.remove("active");
+        btn.classList.add("text-gray-500");
+        if (btn.getAttribute("data-filter") === currentFilter) {
+            btn.classList.add("active");
+            btn.classList.remove("text-gray-500");
+        }
+    }
+
+    // 2. フィルターに合うアイテムを抽出
+    const filteredItems = items.filter(item => {
+        item.classList.add("hidden-item"); 
+        return currentFilter === "all" || item.classList.contains(currentFilter);
+    });
+
+    // 3. ページネーションの計算
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    // 4. 現在のページのアイテムだけ表示
+    filteredItems.forEach((item, index) => {
+        if (index >= startIndex && index < endIndex) {
+            item.classList.remove("hidden-item");
+        }
+    });
+
+    // 5. ページネーションUIの更新
+    renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+    const paginationArea = document.getElementById("pagination");
+    const pageNumbers = document.getElementById("page-numbers");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    if (totalPages <= 1) {
+        paginationArea.style.display = "none";
+        return;
+    }
+    paginationArea.style.display = "flex";
+    pageNumbers.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        btn.className = `w-8 h-8 border border-gray-200 text-[10px] font-bold transition-all ${i === currentPage ? 'bg-black text-white border-black' : 'hover:bg-gray-50'}`;
+        btn.onclick = () => { currentPage = i; updateDisplay(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+        pageNumbers.appendChild(btn);
+    }
+
+    prevBtn.disabled = (currentPage === 1);
+    nextBtn.disabled = (currentPage === totalPages);
+}
+
+function changePage(step) {
+    currentPage += step;
+    updateDisplay();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+window.onload = async () => {
+    await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+    ]);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    if (filter) currentFilter = filter;
+
+    updateDisplay(); 
+};
 </script>
 <body>
 
